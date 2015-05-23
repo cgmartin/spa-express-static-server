@@ -1,0 +1,20 @@
+{
+  "name": "spa-static-server",
+  "version": "0.0.1",
+  "description": "Express Static Server for SPA Client",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Christopher Martin <cgmartin@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "compression": "^1.4.4",
+    "express": "^4.12.4",
+    "express-enforces-ssl": "^1.1.0",
+    "helmet": "^0.9.0",
+    "morgan": "^1.5.3",
+    "serve-static": "^1.9.3",
+    "uuid": "^2.0.1"
+  }
+}
