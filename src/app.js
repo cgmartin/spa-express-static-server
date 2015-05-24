@@ -47,8 +47,8 @@ if (staticCfg.isCompressionEnabled) {
 // Provides runtime boot settings for the SPA.
 // Must come before serveStatic to intercept the file request.
 if (staticCfg.spaBoot) {
-    app.get('/spa-boot.json', function (req, res) {
-        res.json(staticCfg.spaBoot);
+    app.get('/spa-boot.js', function (req, res) {
+        res.jsonp(staticCfg.spaBoot);
     });
 }
 
