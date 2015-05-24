@@ -5,6 +5,7 @@ var _ = require('lodash');
 var staticCfg = require('./config');
 var https = require('https');
 var http = require('http');
+var gracefulShutdown = require('./graceful-shutdown');
 
 module.exports = {
     start: startServer
@@ -34,7 +35,8 @@ function startServer(options) {
             var host = server.address().address;
             var port = server.address().port;
             var scheme = (server instanceof https.Server) ? 'https' : 'http';
-            console.log('spa-static-server listening at %s://%s:%s', scheme, host, port);
+            console.info('spa-static-server listening at %s://%s:%s', scheme, host, port);
+            gracefulShutdown(server);
         };
     }
 }

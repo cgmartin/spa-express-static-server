@@ -47,6 +47,7 @@ $ NODE_ENV=production STATIC_SSL=1 STATIC_PORT=443 node server.js
 * Security headers using [Helmet](https://github.com/helmetjs/helmet) middleware.
 * Creates unique session and "conversation" (browser lifetime) id cookies, for use in correlating logs between services.
 * Optional "SPA Boot Configuration" JSONP launcher, which provides runtime configuration for the client.
+* Graceful shutdown of open connections on unhandled exceptions.
 * Access logs in JSON format.
 
 ## Contributing
@@ -74,7 +75,7 @@ After installation, the following actions are available:
     ├── app.js        # Creates and configures an express app
     ├── config.js     # Configuration options
     ├── errors.js     # Error objects
-    └── server.js     # (entrypoint) Starts the express app on a port (http/https)
+    └── server.js     # (entrypoint) Starts the express app on a port
 ```
 
 ## Libraries & Tools
