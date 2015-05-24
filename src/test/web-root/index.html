@@ -2,12 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>SPA Index.html Test</title>
+    <title>SPA index.html Test</title>
+    <link rel="stylesheet" href="/styles.css"/>
 </head>
 <body>
-    <h1>My SPA</h1>
+    <h1>My SPA index.html</h1>
+    <h2>
+        Demonstrates <i>spa-static-server</i> use and configuration
+    </h2>
+
     <p>
-        Testing 1 2 3...
+        This page should appear for all routes, allowing angular's HTML5 mode ui-router to activate
+        the appropriate state, i.e.:
     </p>
+    <ul>
+        <li><a href="/">/ (home)</a></li>
+        <li><a href="/foo">/foo</a></li>
+        <li><a href="/foo/bar">/foo/bar</a></li>
+    </ul>
+
+    <p>
+        Static asset files are served before the SPA "catch-all" route.
+        If a file does not exist on the filesystem, a 404 will be returned.
+    </p>
+    <ul>
+        <li><a href="/styles.css">/styles.css</a></li>
+        <li><a href="/file-not-found.txt">/file-not-found.txt</a> (404 status)</li>
+    </ul>
+
+    <p>
+        The server can also provide a "SPA Boot Config" JSONP callback for run-time configuration:
+    </p>
+    <ul>
+        <li><a href="/spa-boot.js?callback=main">/spa-boot.js?callback=main</a></li>
+    </ul>
+
 </body>
 </html>
