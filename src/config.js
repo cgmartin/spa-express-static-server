@@ -2,9 +2,10 @@
 
 module.exports = {
     webRootPath: process.env.STATIC_WEBROOT || './src/test/web-root',
-    isCompressionEnabled: (process.env.NODE_ENV === '1'),
+    isCompressionEnabled: (process.env.NODE_ENV === 'production'),
     instanceId: process.env.STATIC_INSTANCE || '1',
     sessionMaxAge: parseInt(process.env.STATIC_SESSION_MAXAGE || 7200000), // 2 hours
+    spaBootFile: process.env.STATIC_SPA_BOOT_FILE || './src/test/spa-boot.js',
 
     // SSL Settings
     isBehindProxy: (process.env.STATIC_REV_PROXY === '1'),
@@ -16,26 +17,6 @@ module.exports = {
         maxAge: 7776000000, // ninety days in ms
         includeSubdomains: true,
         preload: true
-    },
-
-    // SPA Settings
-    spaBoot: {
-        isDebugInfoEnabled: (process.env.NODE_ENV !== 'production'),
-        isLogDebugEnabled: (process.env.NODE_ENV !== 'production'),
-        isHtml5ModeEnabled: true,
-        serverLogging: {
-            isLoggingEnabled: true,
-            loggingLevel: 2,
-            loggingInterval: 120000,
-            maxBufferSize: 1000,
-            excludeTypes: [],
-            isConsoleLogEnabled: (process.env.NODE_ENV !== 'production')
-        },
-        preferredLanguage: 'en',
-        apiBaseUrl: '',
-        isStubsEnabled: (process.env.NODE_ENV !== 'production'),
-        notificationsMaximumOpen: 2,
-        supportedLanguages: ['en', 'fr']
     }
 };
 
