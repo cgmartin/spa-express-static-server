@@ -1,7 +1,7 @@
 {
   "name": "spa-express-static-server",
   "version": "0.0.1",
-  "description": "Express Static Server Library for AngularJS SPA Clients",
+  "description": "Express static server library for AngularJS SPA clients",
   "main": "src/server.js",
   "scripts": {
     "start": "gulp serve",
@@ -13,6 +13,7 @@
   "engines": {
     "node": "0.12.x"
   },
+  "keywords": ["express", "static", "angular", "html5", "spa"],
   "dependencies": {
     "compression": "^1.4.4",
     "cookie-parser": "^1.3.5",
