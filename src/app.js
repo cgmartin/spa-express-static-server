@@ -4,8 +4,12 @@ var path = require('path');
 var staticCfg = require('./config');
 var express = require('express');
 var helmet = require('helmet');
-var enforceSsl = require('express-enforces-ssl');
-var morgan = require('morgan');
+var enforceSsl = require('./middleware/enforce-ssl');
+var conversationId = require('./middleware/conversation-id');
+var sessionId = require('./middleware/session-id');
+var instanceId = require('./middleware/instance-id');
+var logging = require('./middleware/logging');
+var cookieParser = require('cookie-parser');
 var compression = require('compression');
 var serveStatic = require('serve-static');
 var errors = require('./errors');
@@ -18,7 +22,11 @@ if (staticCfg.isBehindProxy) {
 }
 
 // Logging requests
-app.use(morgan(staticCfg.logFormat));
+app.use(logging());
+app.use(cookieParser());
+app.use(conversationId());
+app.use(sessionId(staticCfg.sessionMaxAge));
+app.use(instanceId(staticCfg.instanceId));
 
 // Security middleware
 app.use(helmet.hidePoweredBy());
