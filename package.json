@@ -9,6 +9,8 @@
     "test": "gulp test"
   },
   "author": "Christopher Martin <cgmartin@gmail.com>",
+  "repository": "cgmartin/spa-express-static-server",
+  "homepage": "https://github.com/cgmartin/spa-express-static-server",
   "license": "MIT",
   "engines": {
     "node": "0.12.x"
