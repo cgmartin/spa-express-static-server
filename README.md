@@ -24,7 +24,7 @@ Configuration options are passed in by the consumer or via environment variables
 $ npm install spa-express-static-server --save
 ```
 
-Create a `server.js` wrapper script, passing in your specific configuration options:
+Create a `server.js` wrapper script, passing in the configuration options that apply for your app:
 ```js
 // server.js
 var staticServer = require('spa-express-static-server');
@@ -40,6 +40,21 @@ And run your `server.js` with optional runtime environment variables:
 ```bash
 $ NODE_ENV=production STATIC_SSL=1 STATIC_PORT=443 node server.js
 ```
+
+See [src/config.js](https://github.com/cgmartin/spa-express-static-server/blob/master/src/config.js)
+for configuration options to override.
+
+### Default Environment Variables
+
+* STATIC_WEBROOT : Path to the web root directory.
+* NODE_ENV : Enables compression and static file caching when set to "production".
+* STATIC_INSTANCE : The instance id of the server process, to be logged (default: "1").
+* STATIC_SESSION_MAXAGE : The time in ms until the session ID cookie should expire (default: 2 hours).
+* STATIC_REV_PROXY : The server is behind a reverse proxy when set to "1".
+* STATIC_PORT : The port to run on (default: 8000).
+* STATIC_SSL : Use a HTTPS server when set to "1".
+* STATIC_SSL_KEY : Path to the SSL key file.
+* STATIC_SSL_CERT : Path to the SSL cert file.
 
 ## Features
 
