@@ -43,7 +43,7 @@ $ NODE_ENV=production STATIC_SSL=1 STATIC_PORT=443 node start.js
 
 ## Features
 
-* Catch-all route to index.html for clients using AngularJS HTML5 mode.
+* Catch all non-file routes and forward to index.html for clients using AngularJS HTML5 mode.
 * Security headers using [Helmet](https://github.com/helmetjs/helmet) middleware.
 * Creates unique session and "conversation" (browser lifetime) id cookies, for use in correlating logs between services.
 * Optional "SPA Boot Configuration" JSONP launcher, which provides runtime configuration for the client.
@@ -56,7 +56,7 @@ $ NODE_ENV=production STATIC_SSL=1 STATIC_PORT=443 node start.js
 1. Clone this repo
 1. Install dependencies: `npm i`
 1. Start the app in dev mode: `npm start`
-1. Point browser to <http://localhost:3000/>
+1. Point browser to <http://localhost:3000/> and watch the console for server logs
 
 After installation, the following actions are available:
 
