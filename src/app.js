@@ -47,7 +47,7 @@ module.exports = function createApp(options) {
     // Provides runtime boot settings for the SPA.
     // Must come before serveStatic to intercept the file request.
     if (options.spaBoot) {
-        app.get('/spa-boot.js', function (req, res) {
+        app.get('/spa-boot.js', function(req, res) {
             res.jsonp(options.spaBoot);
         });
     }
@@ -58,7 +58,7 @@ module.exports = function createApp(options) {
     }));
 
     // SPA catch-all
-    app.use(function (req, res, next) {
+    app.use(function(req, res, next) {
         // Bail early if xhr request.
         // Angular requires you to manually add the header to $http:
         // $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
@@ -77,12 +77,12 @@ module.exports = function createApp(options) {
     });
 
     // 404 catch-all
-    app.use(function (req, res, next) {
+    app.use(function(req, res, next) {
         next(new errors.NotFoundError());
     });
 
     // Error handler
-    app.use(function (err, req, res, next) {
+    app.use(function(err, req, res, next) {
         if (err.headers) {
             res.set(err.headers);
         }
@@ -90,4 +90,4 @@ module.exports = function createApp(options) {
     });
 
     return app;
-}
+};

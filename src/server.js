@@ -30,11 +30,11 @@ function startServer(options) {
     }
 
     function createListenCb(server) {
-        return function () {
+        return function() {
             var host = server.address().address;
             var port = server.address().port;
             var scheme = (server instanceof https.Server) ? 'https' : 'http';
-            console.log('spa-static-server listening at %s://%s:%s', scheme, host, port)
-        }
+            console.log('spa-static-server listening at %s://%s:%s', scheme, host, port);
+        };
     }
 }

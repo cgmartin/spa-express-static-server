@@ -1,3 +1,4 @@
+/* jshint -W069 */
 'use strict';
 
 var morgan = require('morgan');
@@ -20,7 +21,7 @@ morgan.token('pid', function getPid() {
 });
 
 module.exports = function logging() {
-    return morgan(jsonFormat)
+    return morgan(jsonFormat);
 };
 
 function jsonFormat(tokens, req, res) {
