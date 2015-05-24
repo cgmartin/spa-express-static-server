@@ -1,0 +1,132 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'publish', '.' ]
+2 info using npm@2.8.3
+3 info using node@v0.12.2
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec { raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/cmartin/Src/spa-platform-js/spa-static-server',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/cmartin/.npm/spa-express-static-server/0.0.2/package.tgz not in flight; packing
+9 verbose tar pack [ '/Users/cmartin/.npm/spa-express-static-server/0.0.2/package.tgz',
+9 verbose tar pack   '/Users/cmartin/Src/spa-platform-js/spa-static-server' ]
+10 verbose tarball /Users/cmartin/.npm/spa-express-static-server/0.0.2/package.tgz
+11 verbose folder /Users/cmartin/Src/spa-platform-js/spa-static-server
+12 info prepublish spa-express-static-server@0.0.2
+13 verbose addLocalTarball adding from inside cache /Users/cmartin/.npm/spa-express-static-server/0.0.2/package.tgz
+14 silly cache afterAdd spa-express-static-server@0.0.2
+15 verbose afterAdd /Users/cmartin/.npm/spa-express-static-server/0.0.2/package/package.json not in flight; writing
+16 verbose afterAdd /Users/cmartin/.npm/spa-express-static-server/0.0.2/package/package.json written
+17 silly publish { name: 'spa-express-static-server',
+17 silly publish   version: '0.0.2',
+17 silly publish   description: 'Express static server library for AngularJS SPA clients',
+17 silly publish   main: 'src/server.js',
+17 silly publish   scripts: { start: 'gulp serve', watch: 'gulp watch', test: 'gulp test' },
+17 silly publish   author: { name: 'Christopher Martin', email: 'cgmartin@gmail.com' },
+17 silly publish   repository:
+17 silly publish    { type: 'git',
+17 silly publish      url: 'git+https://github.com/cgmartin/spa-express-static-server.git' },
+17 silly publish   homepage: 'https://github.com/cgmartin/spa-express-static-server',
+17 silly publish   license: 'MIT',
+17 silly publish   engines: { node: '0.12.x' },
+17 silly publish   keywords: [ 'express', 'static', 'angular', 'html5', 'spa' ],
+17 silly publish   dependencies:
+17 silly publish    { compression: '^1.4.4',
+17 silly publish      'cookie-parser': '^1.3.5',
+17 silly publish      express: '^4.12.4',
+17 silly publish      helmet: '^0.9.0',
+17 silly publish      lodash: '^3.9.1',
+17 silly publish      morgan: '^1.5.3',
+17 silly publish      'serve-static': '^1.9.3',
+17 silly publish      uuid: '^2.0.1' },
+17 silly publish   devDependencies:
+17 silly publish    { 'browser-sync': '^2.7.3',
+17 silly publish      chai: '^2.3.0',
+17 silly publish      del: '^1.2.0',
+17 silly publish      gulp: '^3.8.11',
+17 silly publish      'gulp-filter': '^2.0.2',
+17 silly publish      'gulp-foreach': '^0.1.0',
+17 silly publish      'gulp-help': '^1.3.4',
+17 silly publish      'gulp-if': '^1.2.5',
+17 silly publish      'gulp-istanbul': '^0.9.0',
+17 silly publish      'gulp-istanbul-enforcer': '^1.0.3',
+17 silly publish      'gulp-jscs': '^1.6.0',
+17 silly publish      'gulp-jshint': '^1.11.0',
+17 silly publish      'gulp-load-plugins': '^0.10.0',
+17 silly publish      'gulp-mocha': '^2.1.0',
+17 silly publish      'gulp-newer': '^0.5.0',
+17 silly publish      'gulp-nodemon': '^2.0.3',
+17 silly publish      'gulp-plumber': '^1.0.1',
+17 silly publish      'gulp-print': '^1.1.0',
+17 silly publish      'gulp-util': '^3.0.4',
+17 silly publish      'jshint-stylish': '^2.0.0',
+17 silly publish      merge2: '^0.3.5',
+17 silly publish      mkdirp: '^0.5.1',
+17 silly publish      mocha: '^2.2.5',
+17 silly publish      mockery: '^1.4.0',
+17 silly publish      'node-notifier': '^4.2.1',
+17 silly publish      'run-sequence': '^1.1.0',
+17 silly publish      sinon: '^1.14.1',
+17 silly publish      'vinyl-buffer': '^1.0.0',
+17 silly publish      'vinyl-source-stream': '^1.1.0',
+17 silly publish      yargs: '^3.9.1' },
+17 silly publish   readme: '# spa-express-static-server\n\nAn opinionated static server library for Angular single page applications (SPAs).\n\n[![Build Status](https://travis-ci.org/cgmartin/spa-express-static-server.svg?branch=master)](https://travis-ci.org/cgmartin/spa-express-static-server)\n[![Dependency Status](https://david-dm.org/cgmartin/spa-express-static-server.svg)](https://david-dm.org/cgmartin/spa-express-static-server)\n[![devDependency Status](https://david-dm.org/cgmartin/spa-express-static-server/dev-status.svg)](https://david-dm.org/cgmartin/spa-express-static-server#info=devDependencies)\n\n## Synopsis\n\nThe spa-express-static-server is specifically meant as a reusable static file server\nand Angular "HTML5 Mode" route handler. It could be replaced by Apache Web Server, Nginx, or other\nstatic web servers. No web API/REST calls allowed here.\n\nThis static server project is meant to accompany a [SPA client](https://github.com/cgmartin/angular-spa-browserify-example)\nand a set of separate Node.js microservices (REST webservice, Chat Server, Reverse Proxy).\nIt is designed with portability and scalability in mind (see [Twelve Factors](http://12factor.net/)).\n\nConfiguration options are passed in by the consumer or via environment variables at runtime.\n\n## Quick Start / Usage\n\n```bash\n$ npm install spa-express-static-server --save\n```\n\nCreate a `server.js` wrapper script, passing in your specific configuration options:\n```js\n// server.js\nvar staticServer = require(\'spa-express-static-server\');\nstaticServer.start({\n    webRootPath: \'./dist/web-root\',\n    spaBoot:     require(\'./spa-boot\'),\n    sslKeyFile:  \'./keys/my-domain.key\',\n    sslCertFile: \'./keys/my-domain.cert\'\n});\n```\n\nAnd run your `server.js` with optional runtime environment variables:\n```bash\n$ NODE_ENV=production STATIC_SSL=1 STATIC_PORT=443 node server.js\n```\n\n## Features\n\n* Catch all non-file routes and forward to index.html for clients using AngularJS HTML5 mode.\n* Security headers using [Helmet](https://github.com/helmetjs/helmet) middleware.\n* Creates unique session and "conversation" (browser lifetime) id cookies, for use in correlating logs between services.\n* Optional "SPA Boot Configuration" JSONP launcher, which provides runtime configuration for the client.\n* Graceful shutdown of open connections on unhandled exceptions.\n* Access logs in JSON format.\n\n## Contributing\n\n1. Install [Node.js](https://nodejs.org/download/)\n1. Install Gulp: `npm -g i gulp`\n1. Clone this repo\n1. Install dependencies: `npm i`\n1. Start the app in dev mode: `npm start`\n1. Point browser to <http://localhost:3000/> and watch the console for server logs\n\nAfter installation, the following actions are available:\n\n* `npm start` : Runs in development mode, starting the server and a local webserver, running linting and unit tests, and restarting upon file changes.\n* `npm test` : Runs JavaScript file linting and unit tests.\n* `npm run watch` : Alternative development mode - does not run servers. Only runs linting and tests upon file changes.\n\n## Folder Structure\n\n```\n├── coverage          # Coverage reports\n├── example           # Example client assets for testing\n└── src\n    ├── middleware    # Express middleware\n    ├── app.js        # Creates and configures an express app\n    ├── config.js     # Configuration options\n    ├── errors.js     # Error objects\n    └── server.js     # (entrypoint) Starts the express app on a port\n```\n\n## Libraries & Tools\n\nThe functionality has been implemented by integrating the following 3rd-party tools and libraries:\n\n - [Express](https://github.com/strongloop/express): Fast, minimalist web framework for node\n - [Helmet](https://github.com/helmetjs/helmet): Secure Express apps with various HTTP headers\n - [Gulp](http://gulpjs.com/): Streaming build system and task runner\n - [Node.js](http://nodejs.org/api/): JavaScript runtime environment for server-side development\n - [Mocha](http://mochajs.org/): The fun, simple, flexible JavaScript test framework\n - [Chai](http://chaijs.com/): BDD/TDD assertion library for node and the browser\n - [Sinon](http://sinonjs.org/): Standalone test spies, stubs and mocks for JavaScript\n - [Mockery](https://github.com/mfncooper/mockery): Mock Node.js module dependencies during testing\n\n## License\n\n[MIT License](http://cgm.mit-license.org/)  Copyright © 2015 Christopher Martin\n',
+17 silly publish   readmeFilename: 'README.md',
+17 silly publish   gitHead: '4b54fbdd61d134f22804cde54f1e1582c7bba2a7',
+17 silly publish   bugs: { url: 'https://github.com/cgmartin/spa-express-static-server/issues' },
+17 silly publish   _id: 'spa-express-static-server@0.0.2',
+17 silly publish   _shasum: 'e6dd0ea49a5a67aacb0655e7538268f896bf0b53',
+17 silly publish   _from: '.' }
+18 silly mapToRegistry name spa-express-static-server
+19 silly mapToRegistry using default registry
+20 silly mapToRegistry registry https://registry.npmjs.org/
+21 silly mapToRegistry uri https://registry.npmjs.org/spa-express-static-server
+22 verbose publish registryBase https://registry.npmjs.org/
+23 silly publish uploading /Users/cmartin/.npm/spa-express-static-server/0.0.2/package.tgz
+24 verbose request uri https://registry.npmjs.org/spa-express-static-server
+25 verbose request sending authorization for write operation
+26 info attempt registry request try #1 at 4:01:12 PM
+27 verbose request using bearer token for auth
+28 verbose request id c8048e2e1082eda8
+29 http request PUT https://registry.npmjs.org/spa-express-static-server
+30 http 403 https://registry.npmjs.org/spa-express-static-server
+31 verbose headers { 'content-type': 'application/json',
+31 verbose headers   'cache-control': 'max-age=60',
+31 verbose headers   'content-length': '95',
+31 verbose headers   'accept-ranges': 'bytes',
+31 verbose headers   date: 'Sun, 24 May 2015 20:01:13 GMT',
+31 verbose headers   via: '1.1 varnish',
+31 verbose headers   connection: 'keep-alive',
+31 verbose headers   'x-served-by': 'cache-atl6222-ATL',
+31 verbose headers   'x-cache': 'MISS',
+31 verbose headers   'x-cache-hits': '0',
+31 verbose headers   'x-timer': 'S1432497672.846368,VS0,VE312' }
+32 verbose request invalidating /Users/cmartin/.npm/registry.npmjs.org/spa-express-static-server on PUT
+33 error publish Failed PUT 403
+34 verbose stack Error: "You cannot publish over the previously published version 0.0.2." : spa-express-static-server
+34 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:247:14)
+34 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:170:14)
+34 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:368:22)
+34 verbose stack     at Request.emit (events.js:110:17)
+34 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1219:14)
+34 verbose stack     at Request.emit (events.js:129:20)
+34 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1167:12)
+34 verbose stack     at IncomingMessage.emit (events.js:129:20)
+34 verbose stack     at _stream_readable.js:908:16
+34 verbose stack     at process._tickCallback (node.js:355:11)
+35 verbose statusCode 403
+36 verbose pkgid spa-express-static-server
+37 verbose cwd /Users/cmartin/Src/spa-platform-js/spa-static-server
+38 error Darwin 14.3.0
+39 error argv "node" "/usr/local/bin/npm" "publish" "."
+40 error node v0.12.2
+41 error npm  v2.8.3
+42 error code E403
+43 error "You cannot publish over the previously published version 0.0.2." : spa-express-static-server
+44 error If you need help, you may report this error at:
+44 error     <https://github.com/npm/npm/issues>
+45 verbose exit [ 1, true ]
