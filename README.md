@@ -38,7 +38,7 @@ staticServer.start({
 
 And run your `server.js` with optional runtime environment variables:
 ```bash
-$ NODE_ENV=production STATIC_SSL=1 STATIC_PORT=443 node start.js
+$ NODE_ENV=production STATIC_SSL=1 STATIC_PORT=443 node server.js
 ```
 
 ## Features
@@ -67,14 +67,14 @@ After installation, the following actions are available:
 ## Folder Structure
 
 ```
-├── coverage                 # Coverage reports
-├── example                  # Example client assets for testing
+├── coverage          # Coverage reports
+├── example           # Example client assets for testing
 └── src
-    ├── middleware           # Express middleware
-    ├── app.js               # Creates and configures an express app
-    ├── config.js            # Configuration options
-    ├── errors.js            # Error objects
-    └── server.js            # Starts the express app with http or https on a port (entrypoint)
+    ├── middleware    # Express middleware
+    ├── app.js        # Creates and configures an express app
+    ├── config.js     # Configuration options
+    ├── errors.js     # Error objects
+    └── server.js     # (entrypoint) Starts the express app on a port (http/https)
 ```
 
 ## Libraries & Tools
