@@ -52,7 +52,7 @@ for configuration options to override.
 * `STATIC_SESSION_MAXAGE` : The time in ms until the session ID cookie should expire (default: 2 hours). This is just a tracking cookie, no session storage is used here.
 * `STATIC_REV_PROXY` : The server is behind a reverse proxy when set to "1".
 * `STATIC_PORT` : The port to run on (default: 8000).
-* `STATIC_SSL` : Use a HTTPS server when set to "1".
+* `STATIC_SSL` : Use a HTTPS server when set to "1". Enforces HTTPS by redirecting HTTP users when used with a reverse HTTP/HTTPS proxy.
 * `STATIC_SSL_KEY` : Path to the SSL key file.
 * `STATIC_SSL_CERT` : Path to the SSL cert file.
 
@@ -64,6 +64,7 @@ for configuration options to override.
 * **SPA Boot Configuration**: JSONP launcher that provides runtime configuration for the client.
 * **Graceful shutdown**: Listens for SIGTERM/SIGINT and unhandled exceptions, and waits for open connections to complete before exiting.
 * **JSON format access logs**: Great for log analysis and collectors such as Splunk, Fluentd, Graylog, Logstash, etc.
+* **Enforce HTTPS**: Redirects users from HTTP urls to HTTPS.
 
 ## Contributing
 
