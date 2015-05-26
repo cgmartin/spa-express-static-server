@@ -46,24 +46,24 @@ for configuration options to override.
 
 ### Default Environment Variables
 
-* STATIC_WEBROOT : Path to the web root directory.
-* NODE_ENV : Enables compression and static file caching when set to "production".
-* STATIC_INSTANCE : The instance id of the server process, to be logged (default: "1").
-* STATIC_SESSION_MAXAGE : The time in ms until the session ID cookie should expire (default: 2 hours).
-* STATIC_REV_PROXY : The server is behind a reverse proxy when set to "1".
-* STATIC_PORT : The port to run on (default: 8000).
-* STATIC_SSL : Use a HTTPS server when set to "1".
-* STATIC_SSL_KEY : Path to the SSL key file.
-* STATIC_SSL_CERT : Path to the SSL cert file.
+* `NODE_ENV` : Enables compression when set to "production".
+* `STATIC_WEBROOT` : Path to the web root directory.
+* `STATIC_INSTANCE` : The instance id of the server process, to be logged (default: "1").
+* `STATIC_SESSION_MAXAGE` : The time in ms until the session ID cookie should expire (default: 2 hours). This is just a tracking cookie, no session storage is used here.
+* `STATIC_REV_PROXY` : The server is behind a reverse proxy when set to "1".
+* `STATIC_PORT` : The port to run on (default: 8000).
+* `STATIC_SSL` : Use a HTTPS server when set to "1".
+* `STATIC_SSL_KEY` : Path to the SSL key file.
+* `STATIC_SSL_CERT` : Path to the SSL cert file.
 
 ## Features
 
-* Catch all non-file routes and forward to index.html for clients using AngularJS HTML5 mode.
-* Security headers using [Helmet](https://github.com/helmetjs/helmet) middleware.
-* Creates unique session and "conversation" (browser lifetime) id cookies, for use in correlating logs between services.
-* Optional "SPA Boot Configuration" JSONP launcher, which provides runtime configuration for the client.
-* Graceful shutdown of open connections on unhandled exceptions.
-* Access logs in JSON format.
+* **AngularJS HTML5 mode**: Catch all non-file routes and forward to index.html.
+* **Security headers** using [Helmet](https://github.com/helmetjs/helmet) middleware.
+* **Correlation ID Cookies**: Creates unique session and "conversation" (browser lifetime) cookies. Useful for tracking client API requests throughout a user's session lifetime.
+* **SPA Boot Configuration**: JSONP launcher that provides runtime configuration for the client.
+* **Graceful shutdown**: Listens for SIGTERM/SIGINT and unhandled exceptions, and waits for open connections to complete before exiting.
+* **JSON format access logs**: Great for log analysis and collectors such as Splunk, Fluentd, Graylog, Logstash, etc.
 
 ## Contributing
 
