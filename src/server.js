@@ -7,36 +7,32 @@ var https = require('https');
 var http = require('http');
 var gracefulShutdown = require('./graceful-shutdown');
 
-module.exports = {
-    start: startServer
-};
-
-function startServer(options) {
+module.exports = function startServer(options) {
     options = _.merge({}, staticCfg, options);
     var app = require('./app')(options);
+    var server;
 
+    // Start a secure or insecure server (only one)
     if (!options.isBehindProxy && options.isSslEnabled) {
         // Secure https
         var sslOptions = {
             key:  fs.readFileSync(options.sslKeyFile),
             cert: fs.readFileSync(options.sslCertFile)
         };
-        var sslServer = https.createServer(sslOptions, app);
-        sslServer.listen(options.port, createListenCb(sslServer));
+        server = https.createServer(sslOptions, app);
 
     } else {
         // Insecure http
-        var insecureServer = http.createServer(app);
-        insecureServer.listen(options.port, createListenCb(insecureServer));
+        server = http.createServer(app);
     }
 
-    function createListenCb(server) {
-        return function() {
-            var host = server.address().address;
-            var port = server.address().port;
-            var scheme = (server instanceof https.Server) ? 'https' : 'http';
-            console.info('spa-static-server listening at %s://%s:%s', scheme, host, port);
-            gracefulShutdown(server);
-        };
-    }
-}
+    server.listen(options.port, function onListenComplete() {
+        var host = server.address().address;
+        var port = server.address().port;
+        var scheme = (server instanceof https.Server) ? 'https' : 'http';
+        console.info('static server listening at %s://%s:%s', scheme, host, port);
+        gracefulShutdown(server);
+    });
+
+    return server;
+};

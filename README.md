@@ -5,6 +5,7 @@ An opinionated static server library for Angular single page applications (SPAs)
 [![Build Status](https://travis-ci.org/cgmartin/spa-express-static-server.svg?branch=master)](https://travis-ci.org/cgmartin/spa-express-static-server)
 [![Dependency Status](https://david-dm.org/cgmartin/spa-express-static-server.svg)](https://david-dm.org/cgmartin/spa-express-static-server)
 [![devDependency Status](https://david-dm.org/cgmartin/spa-express-static-server/dev-status.svg)](https://david-dm.org/cgmartin/spa-express-static-server#info=devDependencies)
+[![npm](https://img.shields.io/npm/v/spa-express-static-server.svg)]()
 
 ## Synopsis
 

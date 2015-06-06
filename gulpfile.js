@@ -207,6 +207,7 @@ gulp.task('nodemon', false, function(cb) {
     // whether it is already listening for connections or not.
     .on('readable', function() {
         this.stdout.on('data', function(chunk) {
+            process.stdout.write(chunk);
             if (/listening at http/.test(chunk)) {
                 startBrowserSync(serverPort);
                 if (firstStart) {
@@ -214,8 +215,8 @@ gulp.task('nodemon', false, function(cb) {
                     cb();
                 }
             }
-            process.stdout.write(chunk);
         });
+        this.stderr.pipe(process.stdout);
     });
     //.on('change', ['test-server'])
     //.on('start', function() {});
