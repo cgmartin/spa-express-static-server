@@ -1,5 +1,7 @@
 'use strict';
-
+/**
+ * Custom error classes
+ */
 var util = require('util');
 
 function NotFoundError(message) {

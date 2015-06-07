@@ -5,7 +5,7 @@ An opinionated static server library for Angular single page applications (SPAs)
 [![Build Status](https://travis-ci.org/cgmartin/spa-express-static-server.svg?branch=master)](https://travis-ci.org/cgmartin/spa-express-static-server)
 [![Dependency Status](https://david-dm.org/cgmartin/spa-express-static-server.svg)](https://david-dm.org/cgmartin/spa-express-static-server)
 [![devDependency Status](https://david-dm.org/cgmartin/spa-express-static-server/dev-status.svg)](https://david-dm.org/cgmartin/spa-express-static-server#info=devDependencies)
-[![npm](https://img.shields.io/npm/v/spa-express-static-server.svg)]()
+[![npm version](https://badge.fury.io/js/spa-express-static-server.svg)](http://badge.fury.io/js/spa-express-static-server)
 
 ## Synopsis
 
@@ -42,8 +42,7 @@ And run your `server.js` with optional runtime environment variables:
 $ NODE_ENV=production STATIC_SSL=1 STATIC_PORT=443 node server.js
 ```
 
-See [src/config.js](https://github.com/cgmartin/spa-express-static-server/blob/master/src/config.js)
-for configuration options to override.
+See [src/config.js](src/config.js) for a full list of the available configuration options.
 
 ### Default Environment Variables
 
@@ -82,17 +81,22 @@ After installation, the following actions are available:
 * `npm test` : Runs JavaScript file linting and unit tests.
 * `npm run watch` : Alternative development mode - does not run servers. Only runs linting and tests upon file changes.
 
+Please ensure linting and unit tests pass when submitting Pull Requests.
+
 ## Folder Structure
 
 ```
 ├── coverage          # Coverage reports
 ├── example           # Example client assets for testing
 └── src
-    ├── middleware    # Express middleware
-    ├── app.js        # Creates and configures an express app
+    ├── middleware    # Express middleware utilities
+    ├── lib
+    │   ├── app.js               # Creates and configures an express app
+    │   ├── errors.js            # Custom error classes
+    │   └── graceful-shutdown.js # Attempts a graceful server shutdown
+    │
     ├── config.js     # Configuration options
-    ├── errors.js     # Error objects
-    └── server.js     # (entrypoint) Starts the express app on a port
+    └── server.js     # Starts the express app on a port
 ```
 
 ## Libraries & Tools

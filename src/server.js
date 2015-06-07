@@ -2,17 +2,19 @@
 
 var fs = require('fs');
 var _ = require('lodash');
-var staticCfg = require('./config');
+var cfgDefaults = require('./config');
 var https = require('https');
 var http = require('http');
-var gracefulShutdown = require('./graceful-shutdown');
+var gracefulShutdown = require('./lib/graceful-shutdown');
+var createApp = require('./lib/app');
 
 module.exports = function startServer(options) {
-    options = _.merge({}, staticCfg, options);
-    var app = require('./app')(options);
+    options = _.merge({}, cfgDefaults, options);
+    var app = createApp(options);
     var server;
 
-    // Start a secure or insecure server (only one)
+    // Start a secure or insecure server (only one).
+    // Call startServer multiple times for additional servers.
     if (!options.isBehindProxy && options.isSslEnabled) {
         // Secure https
         var sslOptions = {

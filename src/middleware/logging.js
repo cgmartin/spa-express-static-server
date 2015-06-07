@@ -1,5 +1,8 @@
 /* jshint -W069 */
 'use strict';
+/**
+ * Custom request logger
+ */
 
 var morgan = require('morgan');
 var os = require('os');

@@ -1,5 +1,4 @@
 'use strict';
-
 /**
  * Shutdown a http server gracefully in production environments
  *

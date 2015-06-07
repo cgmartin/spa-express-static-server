@@ -3,16 +3,22 @@
 var path = require('path');
 var express = require('express');
 var helmet = require('helmet');
-var enforceSsl = require('./middleware/enforce-ssl');
-var conversationId = require('./middleware/conversation-id');
-var sessionId = require('./middleware/session-id');
-var instanceId = require('./middleware/instance-id');
-var logging = require('./middleware/logging');
+var enforceSsl = require('../middleware/enforce-ssl');
+var conversationId = require('../middleware/conversation-id');
+var sessionId = require('../middleware/session-id');
+var instanceId = require('../middleware/instance-id');
+var logging = require('../middleware/logging');
+var spaCatchRoutes = require('../middleware/spa-catch-routes');
+var errorHandler = require('../middleware/error-handler');
 var cookieParser = require('cookie-parser');
 var compression = require('compression');
 var serveStatic = require('serve-static');
+
 var errors = require('./errors');
 
+/**
+ * Creates an express app with middleware appropriate for a static web server
+ */
 module.exports = function createApp(options) {
     var app = express();
 
@@ -52,29 +58,10 @@ module.exports = function createApp(options) {
         });
     }
 
-    app.use(serveStatic(options.webRootPath, {
-        index:  false,  // Fall through to SPA catch-all for index.html
-        maxAge: 0      // TODO: cache-busting and far-future
-    }));
+    app.use(serveStatic(options.webRootPath, options.staticOptions));
 
     // SPA catch-all
-    app.use(function(req, res, next) {
-        // Bail early if xhr request.
-        // Angular requires you to manually add the header to $http:
-        // $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-        if (req.xhr) {
-            return next();
-        }
-
-        // Bail early if request is for a file with extension.
-        // If file existed it would have been caught by earlier serveStatic
-        if (path.extname(req.url)) {
-            return next();
-        }
-
-        // Send index for all routes
-        res.sendFile(path.resolve(path.join(options.webRootPath, 'index.html')));
-    });
+    app.use(spaCatchRoutes(path.join(options.webRootPath, options.indexFile)));
 
     // 404 catch-all
     app.use(function(req, res, next) {
@@ -82,12 +69,7 @@ module.exports = function createApp(options) {
     });
 
     // Error handler
-    app.use(function(err, req, res, next) {
-        if (err.headers) {
-            res.set(err.headers);
-        }
-        res.status(err.status || 500).send(err.message);
-    });
+    app.use(errorHandler(options));
 
     return app;
 };

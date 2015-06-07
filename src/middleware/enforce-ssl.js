@@ -1,5 +1,8 @@
 'use strict';
 
+/**
+ * Redirect the user's browser to https
+ */
 module.exports = function enforceSsl() {
     return function(req, res, next) {
         var isHttps = req.secure;

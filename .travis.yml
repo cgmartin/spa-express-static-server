@@ -1,5 +1,13 @@
 language: node_js
 node_js:
-  - "0.10"
-  - "0.12"
-  - "iojs"
+- '0.10'
+- '0.12'
+- iojs
+deploy:
+  provider: npm
+  email: cgmartin@gmail.com
+  on:
+    tags: true
+    repo: cgmartin/spa-express-static-server
+  api_key:
+    secure: Ibjj9FY8jl11RZqGgKLvAlRysdTrczO6SFWYMHnx+GW/zAUdd2NbsR9dka6cy7brRuM/eBI5dQBqXI9vLkRERuV1uhcP8BOHI5TAc5rnil51+1asi5GGYN0k5OmSYhzHU08leL+ianToJvLFWdayuux8nWKNaT1RqlL/mVLhwEqLjpjhOsBSHthh+XLol2zte8HCS0AN/LVagkdWXW0hiMofKMAvxbdikwA7cmZyb0a76CIxvOYNvF/nzU4EFPrd1TD8I64vcmmsR+YTxKzta1vaiNSajXW4ENO7jmYiQ0qJwAi14Kyg1UaauyrafqDu/YCmSPmXS9I8x4y3sEDUOEsrAemdLiPUbt43b6Cfs2dNFVAROQ+Iziq79S7bfuy6dxEfQbsPi7uykr9owblTHjf8LpWmyDal4SSX8e05b/9OepRYN+Xp1OHrYM4xlD44HPkfK1qVaP0zekVYho5Eunyl5vTGVTBB4y0tocNXEjiUm+hmzRH1LtwrkEEnfXBWvjIpEeQHFGmZkDdIKIECl4JuGPNIYXftwJN5YrJAVetmEQBVjzRQ0fQoANLCeGajfkTMQKok2WvaEA9aYt6Dkrr+0XRVCuOIXd6DpgS8ao0nFjS3hPlaJSdtVUVaIHVuzbm+BWo+v6dgJj5HWG8fn4mJAalLqikzRJ/NcOFtfa4=
