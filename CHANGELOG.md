@@ -1,3 +1,8 @@
+0.0.6 / 2015-06-07
+==================
+
+- fix: Relative file paths would cause res.sendFile error
+
 0.0.5 / 2015-06-07
 ==================
 

@@ -18,6 +18,6 @@ module.exports = function spaCatchRoutes(indexFilePath) {
         if (path.extname(req.url)) { return next(); }
 
         // Send index for all routes
-        res.sendFile(indexFilePath);
+        res.sendFile(path.resolve(indexFilePath));
     };
 };

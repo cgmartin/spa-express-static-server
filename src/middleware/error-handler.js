@@ -15,9 +15,9 @@ module.exports = function createErrorHandler(options) {
         res.status(status);
 
         if (status === 404 && options.custom404Page) {
-            res.sendFile(path.join(options.webRootPath, options.custom404Page));
+            res.sendFile(path.resolve(path.join(options.webRootPath, options.custom404Page)));
         } else if (options.customErrorPage) {
-            res.sendFile(path.join(options.webRootPath, options.customErrorPage));
+            res.sendFile(path.resolve(path.join(options.webRootPath, options.customErrorPage)));
         } else {
             res.send(err.message);
         }
