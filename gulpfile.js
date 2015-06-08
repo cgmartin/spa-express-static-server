@@ -222,7 +222,7 @@ gulp.task('nodemon', false, function(cb) {
     //.on('start', function() {});
 });
 
-gulp.task('serve', 'Watch for file changes and re-run build and lint tasks', ['build'], function(cb) {
+gulp.task('serve', 'Watch for file changes and re-run build and lint tasks', function(cb) {
     // When watch and nodemon tasks run at same time
     // the server seems to randomly blow up (??)
     runSequence(
