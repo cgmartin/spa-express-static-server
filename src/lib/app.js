@@ -4,13 +4,9 @@ var path = require('path');
 var express = require('express');
 var helmet = require('helmet');
 var enforceSsl = require('../middleware/enforce-ssl');
-var conversationId = require('../middleware/conversation-id');
-var sessionId = require('../middleware/session-id');
-var instanceId = require('../middleware/instance-id');
-var logging = require('../middleware/logging');
+var logger = require('../middleware/request-logger');
 var spaCatchRoutes = require('../middleware/spa-catch-routes');
 var errorHandler = require('../middleware/error-handler');
-var cookieParser = require('cookie-parser');
 var compression = require('compression');
 var serveStatic = require('serve-static');
 
@@ -28,11 +24,7 @@ module.exports = function createApp(options) {
     }
 
     // Logging requests
-    app.use(logging());
-    app.use(cookieParser());
-    app.use(conversationId());
-    app.use(sessionId(options.sessionMaxAge));
-    app.use(instanceId(options.instanceId));
+    app.use(logger({sessionIdMaxAge: options.sessionMaxAge}));
 
     // Security middleware
     app.use(helmet.hidePoweredBy());

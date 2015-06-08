@@ -8,6 +8,7 @@ module.exports = {
     webRootPath: process.env.STATIC_WEBROOT,
 
     // Static middleware options
+    // see: https://github.com/expressjs/serve-static#options
     staticOptions: {
         index:  false,  // Fall through to SPA catch-all for index.html
         maxAge: 0       // far-future cache control
@@ -24,9 +25,6 @@ module.exports = {
 
     // Enable gzip compression for response output
     isCompressionEnabled: (process.env.NODE_ENV === 'production'),
-
-    // Our process instance, if running in a cluster (for logging)
-    instanceId: process.env.STATIC_INSTANCE || '1',
 
     // Max age for the session tracking cookie
     sessionMaxAge: parseInt(process.env.STATIC_SESSION_MAXAGE || 2 * 60 * 1000), // 20 mins
