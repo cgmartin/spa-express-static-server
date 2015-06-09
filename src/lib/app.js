@@ -9,7 +9,6 @@ var spaCatchRoutes = require('../middleware/spa-catch-routes');
 var errorHandler = require('../middleware/error-handler');
 var compression = require('compression');
 var serveStatic = require('serve-static');
-
 var errors = require('./errors');
 
 /**
@@ -39,7 +38,7 @@ module.exports = function createApp(options) {
 
     // Compression settings
     if (options.isCompressionEnabled) {
-        app.use(compression({threshold: 4000}));
+        app.use(compression(options.compressionOptions));
     }
 
     // Provides runtime boot settings for the SPA.

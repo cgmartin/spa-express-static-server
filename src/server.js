@@ -28,6 +28,13 @@ module.exports = function startServer(options) {
         server = http.createServer(app);
     }
 
+    // Limits maximum incoming headers count
+    server.maxHeadersCount = options.maxHeadersCount;
+
+    // Inactivity before a socket is presumed to have timed out
+    server.timeout = options.serverTimeout;
+
+    // Start listening on a port
     server.listen(options.port, function onListenComplete() {
         var host = server.address().address;
         var port = server.address().port;

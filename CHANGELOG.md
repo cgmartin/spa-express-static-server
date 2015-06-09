@@ -1,3 +1,11 @@
+0.0.8 / 2015-06-08
+==================
+
+- update: Added tuning options for http server (timeout and maxHeadersCount)
+- update: Expose configurable compression middleware options
+- fix: Session cookie maxAge default from 2 mins to 20 mins
+- fix: Remove morgan node dependency
+
 0.0.7 / 2015-06-08
 ==================
 

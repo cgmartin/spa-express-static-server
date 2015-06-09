@@ -26,8 +26,13 @@ module.exports = {
     // Enable gzip compression for response output
     isCompressionEnabled: (process.env.NODE_ENV === 'production'),
 
+    // See https://github.com/expressjs/compression#options
+    compressionOptions: {
+        threshold: 4000
+    },
+
     // Max age for the session tracking cookie
-    sessionMaxAge: parseInt(process.env.STATIC_SESSION_MAXAGE || 2 * 60 * 1000), // 20 mins
+    sessionMaxAge: parseInt(process.env.STATIC_SESSION_MAXAGE || 20 * 60 * 1000), // 20 mins
 
     // Enable this if behind a secure reverse proxy, like heroku
     isBehindProxy: (process.env.STATIC_REV_PROXY === '1'),
@@ -48,6 +53,12 @@ module.exports = {
         maxAge: 7776000000, // ninety days in ms
         includeSubdomains: true,
         preload: true
-    }
+    },
+
+    // Limits maximum incoming headers count. If set to 0 - no limit will be applied.
+    maxHeadersCount: 1000,
+
+    // The number of milliseconds of inactivity before a socket is presumed to have timed out.
+    serverTimeout: 2 * 60 * 1000 // 2 minutes
 };
 
