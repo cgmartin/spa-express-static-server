@@ -1,6 +1,6 @@
 {
   "name": "spa-express-static-server",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Express static server library for AngularJS SPA clients",
   "main": "src/index.js",
   "scripts": {
