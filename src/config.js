@@ -34,9 +34,6 @@ module.exports = {
         threshold: 4000
     },
 
-    // Max age for the session tracking cookie
-    sessionMaxAge: parseInt(process.env.STATIC_SESSION_MAXAGE || 20 * 60 * 1000), // 20 mins
-
     // Enable this if behind a secure reverse proxy, like heroku
     isBehindProxy: (process.env.STATIC_REV_PROXY === '1'),
 

@@ -38,7 +38,7 @@ staticServer.start({
 
 And run your `server.js` with optional runtime environment variables:
 ```bash
-$ NODE_ENV=production STATIC_SSL=1 STATIC_PORT=443 node server.js
+$ STATIC_COMPRESSION=1 STATIC_SSL=1 STATIC_PORT=443 node server.js
 ```
 
 See [src/config.js](src/config.js) for a full list of the available configuration options.
@@ -59,7 +59,7 @@ See [src/config.js](src/config.js) for a full list of the available configuratio
 
 * **AngularJS HTML5 mode**: Catch all non-file routes and forward to index.html.
 * **Security headers** using [Helmet](https://github.com/helmetjs/helmet) middleware.
-* **Correlation ID Cookies**: Creates unique session and "conversation" (browser lifetime) cookies. Useful for tracking client API requests throughout a user's session lifetime.
+* **Correlation ID Cookies**: Creates unique request and "conversation" id cookies. Useful for tracking client API requests throughout a user's session lifetime.
 * **SPA Boot Configuration**: JSONP launcher that provides runtime configuration for the client.
 * **Graceful shutdown**: Listens for SIGTERM/SIGINT and unhandled exceptions, and waits for open connections to complete before exiting.
 * **JSON format access logs**: Great for log analysis and collectors such as Splunk, Fluentd, Graylog, Logstash, etc.

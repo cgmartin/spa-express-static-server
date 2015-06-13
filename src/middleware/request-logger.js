@@ -9,9 +9,7 @@ module.exports = function requestLogger(options) {
     options = _.merge({
         requestIdHeader: 'x-request-id',
         conversationIdHeader: 'x-conversation-id',
-        conversationIdCookieName: 'ConversationId',
-        sessionIdCookieName: 'SessionId',
-        sessionIdMaxAge: 2 * 60 * 1000 // 20 mins
+        conversationIdCookieName: 'ConversationId'
     }, options);
 
     var logger = options.logger || createLogger();
@@ -28,8 +26,7 @@ module.exports = function requestLogger(options) {
         // create child logger with custom tracking ids
         req.log = logger.child({
             reqId: getRequestId(req, res, options.requestIdHeader),
-            conversationId: getConversationId(req, res, options),
-            sessionId: getSessionId(req, res, options.sessionIdCookieName, options.sessionIdMaxAge)
+            conversationId: getConversationId(req, res, options)
         });
 
         res.on('finish', function responseSent() {
@@ -80,20 +77,6 @@ function getConversationId(req, res, options) {
     req.conversationId = conversationId;
     res.cookie(cookieName, conversationId, { path: '/' });
     return conversationId;
-}
-
-/**
- * Create a "session" identifier to track requests per usage session.
- * Client will extend the timeout age upon mouse events and SPA app usage.
- */
-function getSessionId(req, res, cookieName, maxAge) {
-    var sessionId = req.cookies && req.cookies[cookieName];
-    if (!sessionId) {
-        sessionId = uuid.v1();
-    }
-    req.sessionId = sessionId;
-    res.cookie(cookieName, sessionId, { path: '/', maxAge: maxAge });
-    return sessionId;
 }
 
 function getIp(req) {

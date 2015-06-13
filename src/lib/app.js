@@ -23,7 +23,7 @@ module.exports = function createApp(options) {
     }
 
     // Logging requests
-    app.use(logger({sessionIdMaxAge: options.sessionMaxAge}));
+    app.use(logger());
 
     // Security middleware
     app.use(helmet.hidePoweredBy());
