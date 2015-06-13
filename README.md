@@ -45,8 +45,9 @@ See [src/config.js](src/config.js) for a full list of the available configuratio
 
 ### Default Environment Variables
 
-* `NODE_ENV` : Enables compression when set to "production".
 * `STATIC_WEBROOT` : Path to the web root directory.
+* `STATIC_COMPRESSION` : Enables gzip compression when set to "1".
+* `STATIC_GRACEFUL_SHUTDOWN` : Wait for connections to close before stopping server when set to "1".
 * `STATIC_SESSION_MAXAGE` : The time in ms until the session ID cookie should expire (default: 2 hours). This is just a tracking cookie, no session storage is used here.
 * `STATIC_REV_PROXY` : The server is behind a reverse proxy when set to "1".
 * `STATIC_PORT` : The port to run on (default: 8000).

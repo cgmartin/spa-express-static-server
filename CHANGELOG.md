@@ -1,3 +1,9 @@
+0.0.9 / 2015-06-13
+==================
+
+- update: Expose configuration option for graceful shutdown
+- fix/update: Expose configuration option for gzip compression (was NODE_ENV="production")
+
 0.0.8 / 2015-06-08
 ==================
 

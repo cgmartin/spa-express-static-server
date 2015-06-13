@@ -24,7 +24,10 @@ module.exports = {
     customErrorPage: false, // '500.html'
 
     // Enable gzip compression for response output
-    isCompressionEnabled: (process.env.NODE_ENV === 'production'),
+    isCompressionEnabled: (process.env.STATIC_COMPRESSION === '1'),
+
+    // Wait for connections to close before stopping server
+    isGracefulShutdownEnabled: (process.env.STATIC_GRACEFUL_SHUTDOWN === '1'),
 
     // See https://github.com/expressjs/compression#options
     compressionOptions: {

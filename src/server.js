@@ -40,7 +40,9 @@ module.exports = function startServer(options) {
         var port = server.address().port;
         var scheme = (server instanceof https.Server) ? 'https' : 'http';
         console.info('static server listening at %s://%s:%s', scheme, host, port);
-        gracefulShutdown(server);
+        if (options.isGracefulShutdownEnabled) {
+            gracefulShutdown(server);
+        }
     });
 
     return server;
