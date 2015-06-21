@@ -78,7 +78,7 @@ After installation, the following actions are available:
 
 * `npm start` : Runs in development mode, starting the server and a local webserver, running linting and unit tests, and restarting upon file changes.
 * `npm test` : Runs JavaScript file linting and unit tests.
-* `npm run watch` : Alternative development mode - does not run servers. Only runs linting and tests upon file changes.
+* `npm run watch` : Alternative development mode - does not run servers. Only runs linting and unit tests upon file changes.
 
 Please ensure linting and unit tests pass when submitting Pull Requests.
 
@@ -104,6 +104,7 @@ The functionality has been implemented by integrating the following 3rd-party to
 
  - [Express](https://github.com/strongloop/express): Fast, minimalist web framework for node
  - [Helmet](https://github.com/helmetjs/helmet): Secure Express apps with various HTTP headers
+ - [Bunyan](https://github.com/trentm/node-bunyan): A simple and fast JSON logging module for node.js services
  - [Gulp](http://gulpjs.com/): Streaming build system and task runner
  - [Node.js](http://nodejs.org/api/): JavaScript runtime environment for server-side development
  - [Mocha](http://mochajs.org/): The fun, simple, flexible JavaScript test framework

@@ -1,3 +1,8 @@
+0.0.11 / 2015-06-21
+===================
+
+- fix: Improve graceful shutdown logic from spawning multiple timers
+
 0.0.10 / 2015-06-13
 ===================
 
