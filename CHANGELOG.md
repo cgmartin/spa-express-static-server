@@ -1,3 +1,8 @@
+0.0.12 / 2015-07-19
+===================
+
+- update: Provide a status endpoint for health checks. Enable with `config.statusRoute = '/status'`.
+
 0.0.11 / 2015-06-21
 ===================
 

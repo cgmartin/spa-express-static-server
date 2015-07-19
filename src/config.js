@@ -23,6 +23,9 @@ module.exports = {
     // On all other errors, send a custom page. File is relative to webRootPath.
     customErrorPage: false, // '500.html'
 
+    // The route endpoint to provide an 'OK' status for health checks (will not log request)
+    statusRoute: false,
+
     // Enable gzip compression for response output
     isCompressionEnabled: (process.env.STATIC_COMPRESSION === '1'),
 

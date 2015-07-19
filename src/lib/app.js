@@ -41,6 +41,13 @@ module.exports = function createApp(options) {
         app.use(compression(options.compressionOptions));
     }
 
+    if (options.statusRoute) {
+        app.get(options.statusRoute, function(req, res) {
+            req.skipRequestLog = true;
+            res.send('OK');
+        });
+    }
+
     // Provides runtime boot settings for the SPA.
     // Must come before serveStatic to intercept the file request.
     if (options.spaBoot) {
